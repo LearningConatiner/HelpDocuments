@@ -1,0 +1,28 @@
+root@sri-VirtualBox:~/pythonlearn/testgit# git clone --bare https://github.com/LearningConatiner/Step1.git
+Cloning into bare repository 'Step1.git'...
+remote: Counting objects: 27, done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 27 (delta 9), reused 27 (delta 9), pack-reused 0
+Unpacking objects: 100% (27/27), done.
+root@sri-VirtualBox:~/pythonlearn/testgit# ls
+Step1  Step1.git
+root@sri-VirtualBox:~/pythonlearn/testgit# cd Step1.git/
+root@sri-VirtualBox:~/pythonlearn/testgit/Step1.git# git push -mirror https://github.com/LearningConatiner/Step1a.git
+error: did you mean `--mirror` (with two dashes ?)
+root@sri-VirtualBox:~/pythonlearn/testgit/Step1.git# git push --mirror https://github.com/LearningConatiner/Step1a.git
+Username for 'https://github.com': workwithsri
+Password for 'https://workwithsri@github.com': 
+Counting objects: 27, done.
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (27/27), 3.45 KiB | 0 bytes/s, done.
+Total 27 (delta 9), reused 0 (delta 0)
+remote: Resolving deltas: 100% (9/9), done.
+To https://github.com/LearningConatiner/Step1a.git
+ * [new branch]      master -> master
+root@sri-VirtualBox:~/pythonlearn/testgit/Step1.git# cd ..
+root@sri-VirtualBox:~/pythonlearn/testgit# ls
+Step1  Step1.git
+root@sri-VirtualBox:~/pythonlearn/testgit# rm -rf Step1.git/
+root@sri-VirtualBox:~/pythonlearn/testgit# ls
+Step1
+root@sri-VirtualBox:~/pythonlearn/testgit# 
