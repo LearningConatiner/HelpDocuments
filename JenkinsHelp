@@ -1,0 +1,35 @@
+This scope of this file is to provide commands that will help install /uninstall jenkins on ubuntu
+1. Uninstall
+To uninstall jenkins
+sudo service jenkins stop
+remove the package
+sudo apt-get remove jenkins
+sudo apt-get remove --auto-remove jenkins
+
+2.  Installation
+
+On Debian-based distributions, such as Ubuntu, you can install Jenkins through apt.
+
+Recent versions are available in an apt repository. Older but stable LTS versions are in this apt repository.
+
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
+
+Post-install (Setup Wizard)
+Create Admin User and Password for Jenkins
+
+Jenkins is initially configured to be secure on first launch. Jenkins can no longer be accessed without a username and password and open ports are limited. During the initial run of Jenkins a security token is generated and printed in the console log:
+
+*************************************************************
+
+Jenkins initial setup is required. A security token is required to proceed.
+Please use the following security token to proceed to installation:
+
+41d2b60b0e4cb5bf2025d33b21cb
+
+*************************************************************
+
+
+
