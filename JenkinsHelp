@@ -17,7 +17,7 @@ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sour
 sudo apt-get update
 sudo apt-get install jenkins
 
-Post-install (Setup Wizard)
+3.  Post-install (Setup Wizard)
 Create Admin User and Password for Jenkins
 
 Jenkins is initially configured to be secure on first launch. Jenkins can no longer be accessed without a username and password and open ports are limited. During the initial run of Jenkins a security token is generated and printed in the console log:
@@ -30,6 +30,8 @@ Please use the following security token to proceed to installation:
 41d2b60b0e4cb5bf2025d33b21cb
 
 *************************************************************
-
+4.open browser and connect to localhost:8080
+select suggested plugins and next
+all plugins get automatically installed from the updated repositories
 
 
