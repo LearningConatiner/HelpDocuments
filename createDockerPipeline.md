@@ -56,6 +56,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 
 Step 4
+
 Below are the images list, the build no is used for tagging with the registry.
 The latest build is also tagged as 'latest'.At any point in time , we can pull the older built images using the build number tag 
 
