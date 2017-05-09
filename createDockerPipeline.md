@@ -6,8 +6,8 @@ Install docker plugin to build through Jenkins
   
  Step 2
  
-  update jenkins file with following sections to build docker image and push the latest to registry with a tag latest
-  Below sample jenkinsfile build the helloworld example and pushes to a local docker regtry running on 4000 port.
+  update jenkins file with following sections to build docker image and push the latest to registry with a tag latest.
+   Below sample jenkinsfile builds the helloworld example and pushes to a local docker regtry running on 4000 port.
   
   node {
     def app
