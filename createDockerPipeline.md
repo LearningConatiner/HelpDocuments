@@ -44,3 +44,12 @@ Install docker plugin to build through Jenkins
         }
     }
 }
+
+Step 3
+execute docker ps in your local machine to check if the tagging has been done 
+Below is the putput after executing the build from Jenkins , where helloworld has been built and tagges to the registry
+
+root@sri-VirtualBox:~# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                              NAMES
+801ca5a61cb1        helloworld          "python hello.py"        50 minutes ago      Up 50 minutes       0.0.0.0:4000->4000/tcp, 8080/tcp   goofy_swirles
+2f65a032affd        registry:2          "/entrypoint.sh /etc/"   47 hours ago        Up 25 hours         0.0.0.0:5000->5000/tcp     
