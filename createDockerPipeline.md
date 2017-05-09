@@ -53,3 +53,17 @@ root@sri-VirtualBox:~# docker ps -a
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                              NAMES
 801ca5a61cb1        helloworld          "python hello.py"        50 minutes ago      Up 50 minutes       0.0.0.0:4000->4000/tcp, 8080/tcp   goofy_swirles
 2f65a032affd        registry:2          "/entrypoint.sh /etc/"   47 hours ago        Up 25 hours         0.0.0.0:5000->5000/tcp     
+
+
+Step 4
+Below are the images list, the build no is used for tagging with the registry.
+The latest build is also tagged as 'latest'.At any point in time , we can pull the older built images using the build number tag 
+
+        registry
+root@sri-VirtualBox:~# docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+localhost:5000/helloworld   21                  178380ddbf07        About an hour ago   99.02 MB
+localhost:5000/helloworld   22                  178380ddbf07        About an hour ago   99.02 MB
+localhost:5000/helloworld   latest              178380ddbf07        About an hour ago   99.02 MB
+helloworld                  latest              178380ddbf07        About an hour ago   99.02 MB
+localhost:5000/helloworld   <none>              bbe3a7ade48f        3 days ago          99.02 MB
