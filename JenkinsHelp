@@ -34,4 +34,6 @@ Please use the following security token to proceed to installation:
 select suggested plugins and next
 all plugins get automatically installed from the updated repositories
 
+4.ADd docker and jenkins to same user group
+sudo gpasswd -a jenkins docker
 
