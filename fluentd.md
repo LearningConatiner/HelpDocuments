@@ -176,6 +176,40 @@ root@sri-VirtualBox:~/pythonlearn/locust# cat /var/log/td-agent/td-agent.log
 2017-05-11 21:25:11 +0530 debug.test: {"json":"message"}
 
 
+Step 4
+ let’s configure td-agent to output all events with the tag prefixed with “docker” to stdout. Edit /etc/td-agent/td-agent.conf and add the following lines:
+
+<match docker.**>
+
+type stdout
+
+</match>
+
+Then, restart td-agent as follows:
+
+sudo service td-agent restart
+
+Step 5 : Launch a Container and Confirm
+
+Finally, let’s launch a container and send logs to the host’s td-agent for the helloworld example.
+
+docker run –log-driver=fluentd -d -p 4000:4000 helloworld
+
+root@sri-VirtualBox:/var/lib/docker/containers/a51b6f2fe7b3a807665e413980217409f66514c057ca25418327b1c47f8c537a# docker run --log-driver=fluentd -p 4000:4000 helloworld
+ * Running on http://0.0.0.0:4000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 462-906-265
+check the fluentd log file in 
+root@sri-VirtualBox:~# cat /var/log/td-agent/td-agent.log 
+
+2017-05-12 20:16:47 +0530 docker.59b759bac541: {"container_id":"59b759bac5411b374801236c1f913f3019644af579930f25d7060dd3e9ec7017","container_name":"/boring_jones","source":"stderr","log":" * Running on http://0.0.0.0:4000/ (Press CTRL+C to quit)"}
+2017-05-12 20:16:47 +0530 docker.59b759bac541: {"container_name":"/boring_jones","source":"stderr","log":" * Restarting with stat","container_id":"59b759bac5411b374801236c1f913f3019644af579930f25d7060dd3e9ec7017"}
+2017-05-12 20:16:47 +0530 docker.59b759bac541: {"container_name":"/boring_jones","source":"stderr","log":" * Debugger is active!","container_id":"59b759bac5411b374801236c1f913f3019644af579930f25d7060dd3e9ec7017"}
+2017-05-12 20:16:47 +0530 docker.59b759bac541: {"log":" * Debugger PIN: 462-906-265","container_id":"59b759bac5411b374801236c1f913f3019644af579930f25d7060dd3e9ec7017","container_name":"/boring_jones","source":"stderr"}
+
+The logs get directedto fluentd
+root@sri-VirtualBox:~# ^C
 
 
 
