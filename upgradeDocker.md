@@ -31,4 +31,27 @@ Server:
  Built:        Thu May  4 22:10:54 2017
  OS/Arch:      linux/amd64
  Experimental: false
+ 
+ update configuration of docker daemon to use 
+ To configure the Docker daemon as a Prometheus target, you need to specify the metrics-address. The best way to do this is via the daemon.json, which is located at one of the following locations by default. If the file does not exist, create it.
+
+    Linux: /etc/docker/daemon.json
+
+If the file is currently empty, paste the following:
+
+{
+  "metrics-addr" : "127.0.0.1:9323",
+  "experimental" : true
+}
+
+If the file is not empty, add those two keys, making sure that the resulting file is valid JSON. Be careful that every line ends with a comma (,) except for the last line.
+
+Save the file, or in the case of Docker for Mac or Docker for Windows, save the configuration. Restart Docker.
+
+Docker now exposes Prometheus-compatible metrics on port 9323.
+Restart daemon using below command
+Send a HUP signal to the daemon to cause it to reload its configuration. On Linux hosts, use the following command.
+
+$ sudo kill -SIGHUP $(pidof dockerd)
+
 
