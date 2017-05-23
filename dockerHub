@@ -39,4 +39,29 @@ cfbe30543147: Mounted from library/python
 ba2cc2690e31: Mounted from library/python 
 helloworld: digest: sha256:acc5222916453fad034d456717ee9415e994ce26995463528f4e815d3af76ccf size: 2200
 
+Test by pulling the image
+delete existing images by usng docker rmi -f <imageid>
+
+Then pull the image from repository
+root@sri-VirtualBox:~# docker pull srilakh/learncontainers:helloworld
+helloworld: Pulling from srilakh/learncontainers
+79650cf9cc01: Already exists 
+581a2604819e: Already exists 
+53190765e80d: Already exists 
+8154a312dd20: Already exists 
+8c486615f7d8: Already exists 
+87557431b20f: Already exists 
+3f0f1403bdbc: Already exists 
+777cda47e475: Already exists 
+83ff93f777b0: Already exists 
+Digest: sha256:acc5222916453fad034d456717ee9415e994ce26995463528f4e815d3af76ccf
+Status: Downloaded newer image for srilakh/learncontainers:helloworld
+
+View the images list , see below helloworld from the repository srilakh/learncontainers
+root@sri-VirtualBox:~# docker images
+REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
+srilakh/learncontainers   helloworld          ccfa50697a67        3 days ago          99.5 MB
+python                    3.5-alpine          bb453bba35e2        11 days ago         89.3 MB
+
+
 
