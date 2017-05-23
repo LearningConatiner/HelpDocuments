@@ -1,0 +1,42 @@
+## Push Image to docker hub
+
+1.Create an account in hub.docker.com
+
+2.Log in on https://hub.docker.com/
+Click on Create Repository.
+Choose a name (e.g. verse_gapminder) and a description for your repository and click Create.
+
+Log into the Docker Hub from the command line
+docker login --username=yourhubusername --email=youremail@company.com
+
+Check the image ID using
+
+docker images
+root@sri-VirtualBox:~# docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+helloworld                  latest              ccfa50697a67        3 days ago          99.5 MB
+<none>                      <none>              91fd44506174        3 days ago          99.5 MB
+<none>                      <none>              4d9bd7a25f44        3 days ago          99.5 MB
+localhost:5000/helloworld   24                  fa9725016d89        3 days ago          99.5 MB
+python                      3.5-alpine          bb453bba35e2        11 days ago         89.3 MB
+hello-world                 latest              48b5124b2768        4 months ago
+
+and tag your image
+root@sri-VirtualBox:~# docker tag ccfa50697a67 srilakh/learncontainers:helloworld
+
+Push your image to the repository you created
+
+root@sri-VirtualBox:~# docker push srilakh/learncontainers
+The push refers to a repository [docker.io/srilakh/learncontainers]
+344dace26a41: Pushed 
+61399b7d5bf9: Pushed 
+61d4edfb0936: Pushed 
+328a5378b47c: Pushed 
+9fe54912f2c4: Mounted from library/python 
+dfa5124255b9: Mounted from library/python 
+cfbe30543147: Mounted from library/python 
+590266e37bf8: Mounted from library/python 
+ba2cc2690e31: Mounted from library/python 
+helloworld: digest: sha256:acc5222916453fad034d456717ee9415e994ce26995463528f4e815d3af76ccf size: 2200
+
+
