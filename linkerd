@@ -1,0 +1,83 @@
+Linkerd
+ 
+On top of Finagle (scala based library), but linkerd is a language agnostic proxy.
+OOTB, service discovery and integrates with many service discovery schemes (k8s, consul, mesos, etc)
+Provides more complex intelligent load balancing than simple RR
+	https://blog.buoyant.io/2016/03/16/beyond-round-robin-load-balancing-for-latency/
+Retries ability
+Circuit breakers (if one endpoint is unhealthy, automatically cut traffic to that end point, providing resiliency)
+Request level metrics and distributed tracing
+Read: https://linkerd.io/features/
+ 
+Linkerd Configuration
+Driven by config
+		Config details:
+			Namers - Will integrate with service discovery scheme
+			Routers - Routers have routing rules (dtab) and server(ports)
+Incoming
+Outgoing
+				
+	
+Linkerd Deployment Types
+Per host 
+or
+Sidecar - Per pod (using daemon sets in k8s)
+	
+	Request to (host local or pod local Linkerd) -> (linkerd routes traffic)
+ 
+	More Deployment patterns ->
+		https://linkerd.io/in-depth/deployment/#service-to-linker
+ 
+Linkerd Example
+ 
+With k8s - nginx example in GKE
+	
+		
+NAME         CLUSTER-IP     EXTERNAL-IP     PORT(S)                                      AGE
+hello        10.35.255.26   35.185.118.55   80:31996/TCP,8081:31294/TCP,9990:30519/TCP   5m
+kubernetes   10.35.240.1    <none>          443/TCP                                      31m
+prabha_techsub@prabha1-168411:~/linkerd-webinar$ curl -sI -H 'Host: hello' 35.185.118.55
+ 
+ 
+HTTP/1.1 200 OKServer: nginx/1.10.1Date: Mon, 05 Jun 2017 03:16:48 GMTContent-Type: text/html; charset=UTF-8X-Powered-By: PHP/5.6.30l5d-success-class: 1.0Via: 1.1 linkerdConnection: close
+ 
+With k8s - nginx example in local k8s set-up
+		For local k8s set-up load balancer option will not work and 
+change it to to NodePort. Use Node IP instead of external IP.
+ 
+With k8s - sample helloworld python service (works - be sure to handle firewall when running inside k8s cluster - either cloud or on prem, node port firewall needs to be taken care) 
+ 
+With k8s - daemon set 
+ 
+Linkerd Debugging 
+	https://discourse.linkerd.io/t/debugging-a-linkerd-setup/52
+ 
+TO READ - VERY IMPORTANT
+ 
+Read Envoy (Similar to Linkerd)
+	https://lyft.github.io/envoy/
+ 
+Istio announced recently - May last week
+ 
+	Found details on 6/2
+	Checked with VIPER on 6/5 (Viper exploring PoC for exec demo)
+	*** Like k8s, Istio is from google and so as gRPC(leveraged for service mesh   communications) and hence general confidence level is higher than linkerd. 
+Also, linkerd is in early stages and Istio is on top of Envoy(and Envoy has gone through production battles)
+https://cloudplatform.googleblog.com/2017/05/istio-modern-approach-to-developing-and.html
+https://aadrake.com/posts/2017-05-20-enough-with-the-microservices.html
+		
+Different Service Mesh Tools:
+https://lyft.github.io/envoy/docs/intro/comparison.html
+ 
+TO FOLLOW
+ 
+https://docs.google.com/document/d/1VQDIAB0OqiSjIHI8AWMvSdceWhnz56jNpZrLs6o7NJY/edit#
+ 
+ 
+ 
+ 
+TO DO
+From portland/sea trip (extended idea)
+	Linkerd for legacy/non-microservice => explore this if needed.
+ 
+ 
