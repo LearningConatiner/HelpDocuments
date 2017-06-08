@@ -1,4 +1,8 @@
 Linkerd
+
+https://www.youtube.com/watch?v=38DilGa3_Gs
+https://www.youtube.com/watch?v=0xYSy6OmjUM
+
  
 On top of Finagle (scala based library), but linkerd is a language agnostic proxy.
 OOTB, service discovery and integrates with many service discovery schemes (k8s, consul, mesos, etc)
